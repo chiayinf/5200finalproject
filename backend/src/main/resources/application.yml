@@ -1,0 +1,9 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://45.32.226.189:3306/SeattleCrime?serverTimezone=UTC&characterEncoding=utf8&useSSL=false&userUnicode=true
+    username: root
+    password: group3
