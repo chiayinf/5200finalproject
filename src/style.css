@@ -1,0 +1,23 @@
+.mb-3 .reqField:after {
+  content: "*";
+  color: red;
+}
+
+
+.reportListDisplay{
+  margin: 20px 20px;
+}
+
+.reportD{
+  margin: 20px 5px;
+}
+.reportDetail{
+  margin: 0px 10px;
+}
+.reportContent{
+  font-weight: bold;
+}
+
+Button{
+  margin: auto;
+}
