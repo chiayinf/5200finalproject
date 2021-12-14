@@ -33,20 +33,20 @@ public class McppController {
     return Response.isSuccess().data(mcppService.getAllMcpp());
   }
 
-  @ApiOperation("新增Mcpp")
+  @ApiOperation("新增Mcpp，参数传mcppName")
   @RequestMapping(value = "/mcpp/add", method = RequestMethod.POST)
   public Response add(@RequestBody Map<String, String> params) throws SQLException {
     return Response.isSuccess().data(mcppService.add(params.get("mcppName")));
   }
 
-  @ApiOperation("更新Mcpp")
+  @ApiOperation("更新Mcpp，参数传mcppId和mcppName")
   @RequestMapping(value = "/mcpp/update", method = RequestMethod.POST)
   public Response update(@RequestBody Map<String, String> params) throws SQLException {
     mcppService.update(params.get("mcppId"), params.get("mcppName"));
     return Response.isSuccess();
   }
 
-  @ApiOperation("删除Mcpp")
+  @ApiOperation("删除Mcpp，参数传mcppId")
   @RequestMapping(value = "/mcpp/delete", method = RequestMethod.POST)
   public Response delete(@RequestBody Map<String, String> params) throws SQLException {
     mcppService.delete(params.get("mcppId"));

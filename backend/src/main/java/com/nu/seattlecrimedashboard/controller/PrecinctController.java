@@ -33,20 +33,20 @@ public class PrecinctController {
     return Response.isSuccess().data(precinctService.getAllPrecinct());
   }
 
-  @ApiOperation("新增precinct")
+  @ApiOperation("新增precinct，参数传precinctName")
   @RequestMapping(value = "/precinct/add", method = RequestMethod.POST)
   public Response add(@RequestBody Map<String, String> params) throws SQLException {
     return Response.isSuccess().data(precinctService.add(params.get("precinctName")));
   }
 
-  @ApiOperation("更新precinct")
+  @ApiOperation("更新precinct，参数传precinctId和precinctName")
   @RequestMapping(value = "/precinct/update", method = RequestMethod.POST)
   public Response update(@RequestBody Map<String, String> params) throws SQLException {
     precinctService.update(params.get("precinctId"), params.get("precinctName"));
     return Response.isSuccess();
   }
 
-  @ApiOperation("删除precinct")
+  @ApiOperation("删除precinct，参数传precinctId")
   @RequestMapping(value = "/precinct/delete", method = RequestMethod.POST)
   public Response delete(@RequestBody Map<String, String> params) throws SQLException {
     precinctService.delete(params.get("precinctId"));
