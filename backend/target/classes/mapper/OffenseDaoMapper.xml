@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nu.seattlecrimedashboard.dao.mapper.OffenseDaoMapper">
+
+<!--    &lt;!&ndash; 通用查询映射结果 &ndash;&gt;-->
+<!--    <resultMap id="BaseResultMap" type="com.kuaishou.ee.baoliandeng.infrastructure.entity.UpdateRecordUser">-->
+<!--        <id column="id" property="id" />-->
+<!--        <result column="update_record_id" property="updateRecordId" />-->
+<!--        <result column="username" property="username" />-->
+<!--        <result column="deleted" property="deleted" />-->
+<!--        <result column="created_time" property="createdTime" />-->
+<!--        <result column="updated_time" property="updatedTime" />-->
+<!--    </resultMap>-->
+
+  <select id="analyzeCrimeCategoryCount" parameterType="String" resultType="hashmap">
+    SELECT oc.OffenseContent, COUNT(*) as CrimeCount
+    FROM Offense  AS o INNER JOIN
+         OffenseCategory AS oc ON o.OffenseCategoryID = oc.OffenseCategoryID
+    WHERE o.OffenseStartDateTime BETWEEN #{start} AND #{end}
+    GROUP BY  oc.OffenseContent
+  </select>
+
+  <select id="analyzeCrimeCategoryCountYearly" parameterType="String" resultType="hashmap">
+    SELECT year(o.OffenseStartDateTime) as Year, COUNT(*) as CrimeCount
+    FROM Offense  AS o INNER JOIN
+      OffenseCategory AS oc ON o.OffenseCategoryID = oc.OffenseCategoryID
+    where
+      year(o.OffenseStartDateTime) between 2010 and 2020
+        <choose>
+          <when test="offenseCategoryId != null">
+            and o.OffenseCategoryID = #{offenseCategoryId}
+          </when>
+        </choose>
+    GROUP BY year(o.OffenseStartDateTime);
+  </select>
+
+</mapper>

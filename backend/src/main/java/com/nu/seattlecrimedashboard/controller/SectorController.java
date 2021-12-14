@@ -54,4 +54,7 @@ public class SectorController {
     sectorService.delete(params.get("sectorId"));
     return Response.isSuccess();
   }
+
+
+
 }

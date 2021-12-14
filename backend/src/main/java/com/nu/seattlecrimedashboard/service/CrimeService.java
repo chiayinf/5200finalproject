@@ -41,7 +41,8 @@ public class CrimeService {
     offenseService.save(offense);
     System.out.println("location: "+ newLocation.getLocationId() + " " + groupActionInformation.getActionId() + " " + offense.getOffenseId());
 
-
   }
+
+
 
 }
