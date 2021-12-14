@@ -33,20 +33,20 @@ public class BeatController {
     return Response.isSuccess().data(beatService.getAllBeat());
   }
 
-  @ApiOperation("新增Beat")
+  @ApiOperation("新增Beat，参数传beatName")
   @RequestMapping(value = "/beat/add", method = RequestMethod.POST)
   public Response add(@RequestBody Map<String, String> params) throws SQLException {
     return Response.isSuccess().data(beatService.add(params.get("beatName")));
   }
 
-  @ApiOperation("更新Beat")
+  @ApiOperation("更新Beat，参数传beatId和beatName")
   @RequestMapping(value = "/beat/update", method = RequestMethod.POST)
   public Response update(@RequestBody Map<String, String> params) throws SQLException {
     beatService.update(params.get("beatId"), params.get("beatName"));
     return Response.isSuccess();
   }
 
-  @ApiOperation("删除Beat")
+  @ApiOperation("删除Beat，参数传beatId")
   @RequestMapping(value = "/beat/delete", method = RequestMethod.POST)
   public Response delete(@RequestBody Map<String, String> params) throws SQLException {
     beatService.delete(params.get("beatId"));

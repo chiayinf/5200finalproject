@@ -35,20 +35,20 @@ public class SectorController {
     return Response.isSuccess().data(sectorService.getAllSector());
   }
 
-  @ApiOperation("新增sector")
+  @ApiOperation("新增sector，参数传sectorName")
   @RequestMapping(value = "/sector/add", method = RequestMethod.POST)
   public Response add(@RequestBody Map<String, String> params) throws SQLException {
     return Response.isSuccess().data(sectorService.add(params.get("sectorName")));
   }
 
-  @ApiOperation("更新sector")
+  @ApiOperation("更新sector，参数传sectorId和sectorName")
   @RequestMapping(value = "/sector/update", method = RequestMethod.POST)
   public Response update(@RequestBody Map<String, String> params) throws SQLException {
     sectorService.update(params.get("sectorId"), params.get("sectorName"));
     return Response.isSuccess();
   }
 
-  @ApiOperation("删除sector")
+  @ApiOperation("删除sector，参数传sectorId")
   @RequestMapping(value = "/sector/delete", method = RequestMethod.POST)
   public Response delete(@RequestBody Map<String, String> params) throws SQLException {
     sectorService.delete(params.get("sectorId"));
