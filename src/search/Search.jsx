@@ -7,7 +7,10 @@ import Form from "react-bootstrap/Form";
 import ListGroup from "react-bootstrap/ListGroup";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import ListReportDisplay from "../ListReportDisplay";
 import Container from "react-bootstrap/Container";
+import "../style.css"
+
 
 
 export default function Search() {
@@ -17,12 +20,12 @@ export default function Search() {
     console.log("t", term);
     const [allReports, setAllReports] = useState([]);
     function findAllReports() {
-      /* axios
-        .get("http://localhost:8000/api/jobs/" + term)
+      axios
+        .get("http://localhost:8000/api/reports/" + term)
         .then((response) => {
-          setAllJobs(response.data);
+          setAllReports(response.data);
         })
-        .catch((error) => console.error(error)); */
+        .catch((error) => console.error(error));
     }
     useEffect(findAllReports, []);
     if (allReports.length === 0) {
@@ -34,6 +37,24 @@ export default function Search() {
           </>
         );
       }
+      const reportListComponent = allReports.map((report) => {
+        return (
+          <>
+            <p></p>
+            <Link to={"detail/:" + report._id}>
+              {report.year}, {report.location}, {report.typeOfCrime}
+            </Link>
+          </>
+        );
+      });
+      return (
+        <>
+          <Container>
+            <h1> These are all reports with key word: {term}</h1>
+            <ListReportDisplay reports={allReports} />
+          </Container>
+        </>
+      );
 
 
 
