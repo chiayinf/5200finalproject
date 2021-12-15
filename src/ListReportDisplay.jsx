@@ -10,24 +10,12 @@ import Button from "react-bootstrap/Button";
 export default function ListReportDisplay(props) {
   const allReports = props.reports;
 
-  const reportListComponent = allReports.map((report) => {
-    return (
-      <>
-        <p></p>
-        <ListGroup.Item as="li">
-          Year: {report.year}, Location: {report.location}, Type of Crime:
-          {report.typeOfCrime}
-          <br />
-          <Link to={"detail/:" + report._id}>check detail...</Link>
-        </ListGroup.Item>
-      </>
-    );
-  });
+  const jobListComponent = ['year', 'locat'];
   return (
     <>
-      <div class="reportListDisplay">
+      <div class="jobListDisplay">
         <ListGroup as="ol" numbered>
-          {reportListComponent}
+          {jobListComponent}
         </ListGroup>
       </div>
     </>
