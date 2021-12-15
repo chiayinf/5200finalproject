@@ -21,7 +21,8 @@ export default function Search() {
     const [allReports, setAllReports] = useState([]);
     function findAllReports() {
       axios
-        .get("http://localhost:8000/api/reports/" + term)
+        //.get("http://localhost:8000/api/reports/" + term)
+        .get("http://45.32.226.189:8080/type" + term)
         .then((response) => {
           setAllReports(response.data);
         })
