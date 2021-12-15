@@ -28,13 +28,16 @@ export default function ListReportDisplay(props) {
         <p></p>
         <ListGroup as="ul">
           <ListGroup.Item as="li" active>
-          Report Number: {report.reportNumber}
+          Location: {report.mcpp}
           </ListGroup.Item>
+          <ListGroup.Item as="li">Report Number: {report.reportNumber}</ListGroup.Item>
           <ListGroup.Item as="li">Address: {report.blockAddress}</ListGroup.Item>
           <ListGroup.Item as="li">Period: {report.offenseStartDateTime} to {report.offenseEndDateTime}</ListGroup.Item>
           <ListGroup.Item as="li">Report Time: {report.reportDateTime}</ListGroup.Item>
           <ListGroup.Item as="li">Crime Type: {report.crimeAgainstCategory}</ListGroup.Item>
           <ListGroup.Item as="li">Crime Detail: {report.offense}</ListGroup.Item>
+          <ListGroup.Item as="li">Longitude: {report.longitude}</ListGroup.Item>
+          <ListGroup.Item as="li">Latitude: {report.latitude}</ListGroup.Item>
         </ListGroup>
         
       </>
