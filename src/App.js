@@ -13,6 +13,8 @@ import Container from "react-bootstrap/Container";
 
 function App() {
   const [formInput, setFormInput] = useState('');
+  const [yearInput, setYearInput] = useState('');
+  const [typeInput, setTypeInput] = useState('');
   const navigate = useNavigate();
   
   return (
@@ -36,8 +38,43 @@ function App() {
           </Form>
           <Button
             variant="primary" onClick={() => navigate('/search/?term=' + formInput)}>
-            Search for Reports
+            Search by location
           </Button>
+
+          <Form>
+            <Form.Group className="mb-3" controlId="formBasicText">
+              <Form.Label ></Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="type a year to search for crime reports in that area"
+                value={yearInput}
+                onChange={(e) => setYearInput(e.target.value)}
+
+              />
+            </Form.Group>
+          </Form>
+          <Button
+            variant="primary" onClick={() => navigate('/search/?term=' + yearInput)}>
+            Search by year
+          </Button>
+
+          <Form>
+            <Form.Group className="mb-3" controlId="formBasicText">
+              <Form.Label ></Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="enter PROPERTY or SOCIETY or PERSON to search for crime reports in that area"
+                value={typeInput}
+                onChange={(e) => setTypeInput(e.target.value)}
+
+              />
+            </Form.Group>
+          </Form>
+          <Button
+            variant="primary" onClick={() => navigate('/search/?term=' + typeInput)}>
+            Search by type of crime
+          </Button>
+
 
         </div>
     </Container>

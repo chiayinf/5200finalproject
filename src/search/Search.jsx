@@ -20,9 +20,11 @@ export default function Search() {
     console.log("t", term);
     const [allReports, setAllReports] = useState([]);
     function findAllReports() {
-      axios
-        //.get("http://localhost:8000/api/reports/" + term)
-        .get("http://45.32.226.189:8080/type" + term)
+      axios.get("http://45.32.226.189:8080/search/location/"+term, {
+        headers: {
+          'Access-Control-Allow-Origin': true
+        }
+        })
         .then((response) => {
           setAllReports(response.data);
         })
@@ -47,7 +49,7 @@ export default function Search() {
             </Link>
           </>
         );
-      });
+      }); 
       return (
         <>
           <Container>
@@ -56,7 +58,6 @@ export default function Search() {
           </Container>
         </>
       );
-
 
 
 }
